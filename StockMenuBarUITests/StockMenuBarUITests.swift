@@ -10,31 +10,28 @@ import XCTest
 final class StockMenuBarUITests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    override func tearDownWithError() throws {}
 
     @MainActor
     func testExample() throws {
         let app = XCUIApplication()
+        app.launchEnvironment = ["XCODE_RUNNING_FOR_UI_TESTS": "1"]
         app.launch()
 
-        let menuBarItem = app.statusItems.firstMatch
+        let menuBarItem = app.statusItems["StockMenuBarItem"]
         let exists = menuBarItem.waitForExistence(timeout: 5.0)
-        XCTAssertTrue(exists, "메뉴바에 앱 아이콘/텍스트가 노출되지 않았습니다.")
+        XCTAssertTrue(exists)
         
         menuBarItem.click()
         
-        let stockSelectionMenu = app.menuItems["종목 선택"]
-        let menuExists = stockSelectionMenu.waitForExistence(timeout: 2.0)
-        XCTAssertTrue(menuExists, "메뉴바를 클릭했을 때 드롭다운 메뉴가 열리지 않았습니다.")
+        let excelMenuButton = app.menuItems["엑셀"]
+        XCTAssertTrue(excelMenuButton.waitForExistence(timeout: 2.0))
+        excelMenuButton.click()
+        
+        let updatedMenuBarItem = app.statusItems["StockMenuBarItem"]
+        XCTAssertTrue(updatedMenuBarItem.waitForExistence(timeout: 2.0))
     }
 }
