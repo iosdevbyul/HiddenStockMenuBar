@@ -8,18 +8,6 @@
 import Foundation
 import Combine
 
-struct StockItem: Identifiable, Hashable, Codable {
-    let id: UUID
-    let code: String
-    let name: String
-    
-    init(id: UUID = UUID(), code: String, name: String) {
-        self.id = id
-        self.code = code
-        self.name = name
-    }
-}
-
 enum DisguiseTheme: String, CaseIterable, Identifiable {
     case weather = "날씨"
     case excel = "엑셀"

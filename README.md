@@ -1,4 +1,4 @@
-# StockMask
+# HiddenStockMenuBar
 
 macOS 메뉴바 환경에서 실시간 주가 데이터를 모니터링하고, 다양한 스킨으로 화면 표시 형식을 전환할 수 있는 데스크톱 위젯입니다.
 
@@ -9,7 +9,7 @@ macOS 메뉴바 환경에서 실시간 주가 데이터를 모니터링하고, �
 - Architecture: MVVM Pattern
 
 ## 2. Directory Structure
-- App/StockMaskApp.swift
+- App/StockMenuBarApp.swift
 - Managers/StockManager.swift
 - Services/StockService.swift
 - Models/StockItem.swift
@@ -23,4 +23,4 @@ macOS 메뉴바 환경에서 실시간 주가 데이터를 모니터링하고, �
   - 시계 테마: 주가 자릿수를 분할 연산하여 시/분/초 형태로 매핑 (08:56:00)
 
 ## 4. License
-This project is licensed under the MIT License.# HiddenStockMenuBar
+This project is licensed under the MIT License.
