@@ -24,20 +24,17 @@ final class StockMenuBarUITests: XCTestCase {
 
     @MainActor
     func testExample() throws {
-        // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // XCUIAutomation Documentation
-        // https://developer.apple.com/documentation/xcuiautomation
-    }
-
-    @MainActor
-    func testLaunchPerformance() throws {
-        // This measures how long it takes to launch your application.
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
+        let menuBarItem = app.statusItems.firstMatch
+        let exists = menuBarItem.waitForExistence(timeout: 5.0)
+        XCTAssertTrue(exists, "메뉴바에 앱 아이콘/텍스트가 노출되지 않았습니다.")
+        
+        menuBarItem.click()
+        
+        let stockSelectionMenu = app.menuItems["종목 선택"]
+        let menuExists = stockSelectionMenu.waitForExistence(timeout: 2.0)
+        XCTAssertTrue(menuExists, "메뉴바를 클릭했을 때 드롭다운 메뉴가 열리지 않았습니다.")
     }
 }
