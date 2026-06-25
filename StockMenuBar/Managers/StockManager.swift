@@ -46,20 +46,20 @@ class StockManager: ObservableObject {
         }
         
         switch selectedTheme {
-        case .weather:
-            let temperature = String(format: "%.2f", priceNum / 100.0)
-            return "\(temperature)°C"
-            
-        case .excel:
-            let priceInt = Int(priceNum)
-            return "[\(priceInt)]"
-            
-        case .clock:
-            let priceInt = Int(priceNum)
-            let seconds = priceInt % 100
-            let minutes = (priceInt / 100) % 100
-            let hours = priceInt / 10000
-            return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+            case .weather:
+                let temperature = String(format: "%.2f", priceNum / 100.0)
+                return "🌤️ \(temperature)°C"
+
+            case .excel:
+                let priceInt = Int(priceNum)
+                return "📑 [\(priceInt)]"
+
+            case .clock:
+                let priceInt = Int(priceNum)
+                let seconds = priceInt % 100
+                let minutes = (priceInt / 100) % 100
+                let hours = priceInt / 10000
+                return "🕒 \(String(format: "%02d:%02d:%02d", hours, minutes, seconds))"
         }
     }
     

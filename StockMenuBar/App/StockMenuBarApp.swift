@@ -31,7 +31,7 @@ struct StockMenuBarApp: App {
                     stockManager.selectStock(stock)
                 }) {
                     HStack {
-                        if stockManager.selectedStock.code == stock.code { Text("✓ ") }
+                        if stockManager.selectedStock.code == stock.code { Text("✓ \(stock.name)") }
                         Text(stock.name)
                     }
                 }
@@ -49,7 +49,7 @@ struct StockMenuBarApp: App {
             ForEach(DisguiseTheme.allCases) { theme in
                 Button(action: { stockManager.selectedTheme = theme }) {
                     HStack {
-                        if stockManager.selectedTheme == theme { Text("✓ ") }
+                        if stockManager.selectedTheme == theme { Text("✓ \(theme.rawValue)") }
                         Text(theme.rawValue)
                     }
                 }
