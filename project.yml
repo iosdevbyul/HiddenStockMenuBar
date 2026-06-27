@@ -1,0 +1,48 @@
+name: StockMenuBar
+
+options:
+  minimumXcodeGenVersion: 2.43.0
+
+targets:
+  StockMenuBar:
+    type: application
+    platform: macOS
+
+    deploymentTarget:
+      macOS: "26.5"
+
+    sources:
+      - path: StockMenuBar
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.tris.StockMenuBar
+        PRODUCT_NAME: StockMenuBar
+        GENERATE_INFOPLIST_FILE: YES
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+
+    scheme:
+      testTargets:
+        - StockMenuBarTests
+        - StockMenuBarUITests
+
+  StockMenuBarTests:
+    type: bundle.unit-test
+    platform: macOS
+
+    sources:
+      - path: StockMenuBarTests
+
+    dependencies:
+      - target: StockMenuBar
+
+  StockMenuBarUITests:
+    type: bundle.ui-testing
+    platform: macOS
+
+    sources:
+      - path: StockMenuBarUITests
+
+    dependencies:
+      - target: StockMenuBar
